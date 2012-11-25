@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account" xml:space="preserve">
+    <value>account</value>
+  </data>
+  <data name="AddFriendButton" xml:space="preserve">
+    <value>Add friend</value>
+  </data>
+  <data name="AddPerson" xml:space="preserve">
+    <value>add person</value>
+  </data>
+  <data name="RemovePerson" xml:space="preserve">
+    <value>remove</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>change</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>save</value>
+  </data>
+  <data name="RefreshButton" xml:space="preserve">
+    <value>refresh</value>
+  </data>
+  <data name="AddDialog" xml:space="preserve">
+    <value>create</value>
+  </data>
+  <data name="AddButton" xml:space="preserve">
+    <value>add</value>
+  </data>
+  <data name="LeaveChat" xml:space="preserve">
+    <value>leave chat</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="AttachmentLabel" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="AudioContentLabel" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="CallPhone" xml:space="preserve">
+    <value>call</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="ChangeChatLabel" xml:space="preserve">
+    <value>Change chat</value>
+  </data>
+  <data name="NameChatLabel" xml:space="preserve">
+    <value>Chat name</value>
+  </data>
+  <data name="ChangePhotoButton" xml:space="preserve">
+    <value>Change photo</value>
+  </data>
+  <data name="ChoosePhotoButton" xml:space="preserve">
+    <value>Choose existing photo</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="ContactsTab" xml:space="preserve">
+    <value>contacts</value>
+  </data>
+  <data name="DeclineRequestButton" xml:space="preserve">
+    <value>decline request</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>delete</value>
+  </data>
+  <data name="DeleteFriendButton" xml:space="preserve">
+    <value>delete friend</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>For fast, free and convenient messaging with friends and contacts</value>
+  </data>
+  <data name="DisableNotificationFormatMessage" xml:space="preserve">
+    <value>Disable notification sound for the next {0}</value>
+  </data>
+  <data name="DisableSoundOneHour" xml:space="preserve">
+    <value>disable sounds for the next hour</value>
+  </data>
+  <data name="DisableSoundSeveralHours" xml:space="preserve">
+    <value>disable sounds for the next 8 hours</value>
+  </data>
+  <data name="DocumentContentLabel" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="ErrorAuthorization" xml:space="preserve">
+    <value>Authorization error. Please make sure that you've entered the correct phone or email and password and try again.</value>
+  </data>
+  <data name="ErrorUploading" xml:space="preserve">
+    <value>Error uploading</value>
+  </data>
+  <data name="ForwardButton" xml:space="preserve">
+    <value>forward</value>
+  </data>
+  <data name="ForwardedContentLabel" xml:space="preserve">
+    <value>Forwarded message</value>
+  </data>
+  <data name="FriendRequests" xml:space="preserve">
+    <value>friend requests ({0})</value>
+  </data>
+  <data name="Friends" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="FriendsTab" xml:space="preserve">
+    <value>friends</value>
+  </data>
+  <data name="GeolocationMapUriFormatMessage" xml:space="preserve">
+    <value>http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&amp;zoom=11&amp;size=320x240&amp;sensor=false</value>
+  </data>
+  <data name="InAppNotificationsLabel" xml:space="preserve">
+    <value>In-app notifications</value>
+  </data>
+  <data name="InviteFriend" xml:space="preserve">
+    <value>invite friend</value>
+  </data>
+  <data name="IsTypingLabel" xml:space="preserve">
+    <value>{0} is typing...</value>
+  </data>
+  <data name="LoadingMessagesLabel" xml:space="preserve">
+    <value>Loading messages..</value>
+  </data>
+  <data name="LocContentLabel" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>log in</value>
+  </data>
+  <data name="LogoutButton" xml:space="preserve">
+    <value>log out</value>
+  </data>
+  <data name="MessageNotSentLabel" xml:space="preserve">
+    <value>was not sent.</value>
+  </data>
+  <data name="MessagesTab" xml:space="preserve">
+    <value>messages</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Your name</value>
+  </data>
+  <data name="LastNameLabel" xml:space="preserve">
+    <value>Your last name</value>
+  </data>
+  <data name="NewAccountLabel" xml:space="preserve">
+    <value>New account</value>
+  </data>
+  <data name="NoMessagesLabel" xml:space="preserve">
+    <value>No messages yet</value>
+  </data>
+  <data name="NumberMemebersFormatMessage" xml:space="preserve">
+    <value>{0} members</value>
+  </data>
+  <data name="NumberMessagesInChat" xml:space="preserve">
+    <value>{0} messages</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="OnlineLabel" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PeopleMayKnowLabel" xml:space="preserve">
+    <value>people you may know</value>
+  </data>
+  <data name="PhoneNumberLabel" xml:space="preserve">
+    <value>Your phone number</value>
+  </data>
+  <data name="AuthLoginLabel" xml:space="preserve">
+    <value>Your phone number, login or e-mail</value>
+  </data>
+  <data name="PhotoContentLabel" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="PushNotifications" xml:space="preserve">
+    <value>push notifications</value>
+  </data>
+  <data name="RemoveAttachmentButton" xml:space="preserve">
+    <value>Remove attachment</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Requests</value>
+  </data>
+  <data name="SearchButton" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="SearchDescription" xml:space="preserve">
+    <value>Search among your friends and contacts.</value>
+  </data>
+  <data name="SendButton" xml:space="preserve">
+    <value>send</value>
+  </data>
+  <data name="SendInvitationButton" xml:space="preserve">
+    <value>send invitation</value>
+  </data>
+  <data name="SendMessageButton" xml:space="preserve">
+    <value>send a message</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="ShareLocationButton" xml:space="preserve">
+    <value>Share location</value>
+  </data>
+  <data name="SignupButton" xml:space="preserve">
+    <value>sign up</value>
+  </data>
+  <data name="Sound" xml:space="preserve">
+    <value>Sound</value>
+  </data>
+  <data name="SoundNotificationsDisabledUntilFormatMessage" xml:space="preserve">
+    <value>Sound notifications disabled until {0}</value>
+  </data>
+  <data name="SyncContactsButton" xml:space="preserve">
+    <value>sync contacts</value>
+  </data>
+  <data name="SyncDescription" xml:space="preserve">
+    <value>Sync your phone contacts with your VK friends list</value>
+  </data>
+  <data name="TakePhotoButton" xml:space="preserve">
+    <value>Take photo</value>
+  </data>
+  <data name="Toast" xml:space="preserve">
+    <value>Toast</value>
+  </data>
+  <data name="TryAgainLabel" xml:space="preserve">
+    <value>Try again</value>
+  </data>
+  <data name="UploadingAttachmentsLabel" xml:space="preserve">
+    <value>Uploading attachments..</value>
+  </data>
+  <data name="UserNotRegistredDescription" xml:space="preserve">
+    <value>User is not registred yet. You can send an invitation.</value>
+  </data>
+  <data name="Vibrate" xml:space="preserve">
+    <value>Vibrate</value>
+  </data>
+  <data name="VideoContentLabel" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="WasOnlineFormatMessage" xml:space="preserve">
+    <value>was last seen {0} ago</value>
+  </data>
+  <data name="WriteMessageHint" xml:space="preserve">
+    <value>Write a message</value>
+  </data>
+  <data name="YourPasswordLabel" xml:space="preserve">
+    <value>Your password</value>
+  </data>
+  <data name="CaptchaLabel" xml:space="preserve">
+    <value>Type symbols from the picture</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RequestSMS" xml:space="preserve">
+    <value>request SMS again</value>
+  </data>
+  <data name="SmsCodeLabel" xml:space="preserve">
+    <value>Type code from SMS message</value>
+  </data>
+  <data name="ConfirmPasswordLabel" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Password must have at least 6 symbols length and equal to confirmed password.</value>
+  </data>
+  <data name="PhoneInUse" xml:space="preserve">
+    <value>Phone is incorrect or already in use.</value>
+  </data>
+  <data name="SignUpFailed" xml:space="preserve">
+    <value>Can't sign up user. One of parameters is incorrect or such user already exists.</value>
+  </data>
+  <data name="InternalApiError" xml:space="preserve">
+    <value>Internal api error occured. Please get the latest available version of this application.</value>
+  </data>
+  <data name="RemoveDialog" xml:space="preserve">
+    <value>remove dialog</value>
+  </data>
+  <data name="WatermarkedTextBox_DefaultWatermarkText" xml:space="preserve">
+    <value>Enter text...</value>
+  </data>
+  <data name="WatermarkedTextBox_TemplatePartIsOfIncorrectType" xml:space="preserve">
+    <value>Template part is of incorrect type.</value>
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="TotalDays" xml:space="preserve">
+    <value> day(s)</value>
+  </data>
+  <data name="TotalHours" xml:space="preserve">
+    <value> hour(s)</value>
+  </data>
+  <data name="TotalMinutes" xml:space="preserve">
+    <value> minute(s)</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>yesterday</value>
+  </data>
+  <data name="OutMessageNotRead" xml:space="preserve">
+    <value>Not read yet</value>
+  </data>
+  <data name="ResendButton" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="GPSNotEnabled" xml:space="preserve">
+    <value>Please enable your location service by going to Settings -&gt; Location -&gt; Turn on Location Services option.</value>
+  </data>
+  <data name="AppIsLoadingItems" xml:space="preserve">
+    <value>Currently application is loading some items from Vkontakte. Please, wait a bit and repeat action.</value>
+  </data>
+  <data name="ApplicationNotifications" xml:space="preserve">
+    <value>application notifications</value>
+  </data>
+  <data name="UploadPhotoError" xml:space="preserve">
+    <value>Some error occured during photo uploading. Upload stopped.</value>
+  </data>
+  <data name="CopyButton" xml:space="preserve">
+    <value>copy</value>
+  </data>
+  <data name="SelectButton" xml:space="preserve">
+    <value>select</value>
+  </data>
+  <data name="ForwardMessagesDescription" xml:space="preserve">
+    <value>Your messages was marked to forward and will be send immediately when you press Send button in any chat or dialog.</value>
+  </data>
+  <data name="LocationAttachmentDescription" xml:space="preserve">
+    <value>Your location was saved and will be immediately send when you press Send button in this view.</value>
+  </data>
+  <data name="AttachmentsLabel" xml:space="preserve">
+    <value>attachments</value>
+  </data>
+  <data name="NumberAttachments" xml:space="preserve">
+    <value>{0} of attachments</value>
+  </data>
+  <data name="CantRemoveThisUser" xml:space="preserve">
+    <value>You have no enough access rights to remove this user.</value>
+  </data>
+  <data name="CantAddThisUser" xml:space="preserve">
+    <value>You have no enough access rights to add this user.</value>
+  </data>
+  <data name="SelectUserCaption" xml:space="preserve">
+    <value>Select user</value>
+  </data>
+  <data name="CanNotSaveThisChange" xml:space="preserve">
+    <value>Can't save this change.</value>
+  </data>
+  <data name="DialogsTab" xml:space="preserve">
+    <value>dialogs</value>
+  </data>
+  <data name="IncomeMessage" xml:space="preserve">
+    <value>Income</value>
+  </data>
+  <data name="SentMessage" xml:space="preserve">
+    <value>Sent</value>
+  </data>
+  <data name="FriendRequest" xml:space="preserve">
+    <value>friend request</value>
+  </data>
+  <data name="GlobalSearchDescription" xml:space="preserve">
+    <value>Search for your friends and contacts among all registred users.</value>
+  </data>
+  <data name="CreateChat" xml:space="preserve">
+    <value>create chat</value>
+  </data>
+  <data name="CreateChatError" xml:space="preserve">
+    <value>To create chat you need to select name and friends to talk with.</value>
+  </data>
+  <data name="ContactsGroup" xml:space="preserve">
+    <value>contacts</value>
+  </data>
+  <data name="FriendsGroup" xml:space="preserve">
+    <value>friends</value>
+  </data>
+  <data name="OtherUsersGroup" xml:space="preserve">
+    <value>other users</value>
+  </data>
+  <data name="PossibleFriendsGroup" xml:space="preserve">
+    <value>possible friends</value>
+  </data>
+  <data name="LoadMoreLabel" xml:space="preserve">
+    <value>Pull to load more</value>
+  </data>
+  <data name="PressBackLabel" xml:space="preserve">
+    <value>Press back to close</value>
+  </data>
+  <data name="CantCreateChat" xml:space="preserve">
+    <value>Such chat cannot be created.</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Connecting...</value>
+  </data>
+  <data name="AddingChatPage" xml:space="preserve">
+    <value>Adding chat page...</value>
+  </data>
+  <data name="ContactsSyncing" xml:space="preserve">
+    <value>Contacts synchronization...</value>
+  </data>
+  <data name="GettingLocation" xml:space="preserve">
+    <value>Searching for location...</value>
+  </data>
+  <data name="SavingChanges" xml:space="preserve">
+    <value>Saving changes...</value>
+  </data>
+  <data name="SearchFriendRequests" xml:space="preserve">
+    <value>Search friend requests...</value>
+  </data>
+  <data name="SendingMessage" xml:space="preserve">
+    <value>Sending message...</value>
+  </data>
+  <data name="UploadingPhoto" xml:space="preserve">
+    <value>Uploading photo...</value>
+  </data>
+  <data name="TwoMemebersFormatMessage" xml:space="preserve">
+    <value>{0} members</value>
+  </data>
+</root>

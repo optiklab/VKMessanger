@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application x:Class="SlXnaApp1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+             xmlns:xna="clr-namespace:Microsoft.Xna.Framework;assembly=Microsoft.Xna.Framework.Interop"
+             xmlns:silverlightactivator="clr-namespace:SilverlightActivator;assembly=SilverlightActivator"
+             xmlns:local="clr-namespace:SlXnaApp1">
+  <!--Application Resources-->
+    <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Resources/Style.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+      <silverlightactivator:ActivationManager x:Name="SilverlightActivator" LoadAssemblyParts="False" />
+      <local:LocalizedStrings xmlns:local="clr-namespace:SlXnaApp1.Infrastructure" x:Key="LocalizedStrings" />
+    </ResourceDictionary>
+  </Application.Resources>
+  <Application.ApplicationLifetimeObjects>
+    <!--Required object that handles lifetime events for the application-->
+    <shell:PhoneApplicationService Launching="Application_Launching" Closing="Application_Closing" Activated="Application_Activated" Deactivated="Application_Deactivated" />
+    <!--The SharedGraphicsDeviceManager is used to render with the XNA Graphics APIs-->
+    <xna:SharedGraphicsDeviceManager />
+  </Application.ApplicationLifetimeObjects>
+</Application>

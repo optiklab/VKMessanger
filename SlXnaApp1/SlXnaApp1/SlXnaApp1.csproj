@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{560D565E-DBA5-4E43-A85E-AA02BDE0966A}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SlXnaApp1</RootNamespace>
+    <AssemblyName>SlXnaApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>ru-RU;</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>VK_2993778.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>SlXnaApp1.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Data.Services.Client">
+      <HintPath>..\..\packages\Phone.Storage.1.0.1\lib\sl40-wp71\Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>Dependencies\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Microsoft.Xna.Framework.Game" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics" />
+    <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
+    <Reference Include="Microsoft.Xna.Framework.Interop" />
+    <Reference Include="mscorlib.extensions" />
+    <Reference Include="Phone.Storage">
+      <HintPath>..\..\packages\Phone.Storage.1.0.1\lib\sl40-wp71\Phone.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="SilverlightActivator">
+      <HintPath>..\..\packages\SilverlightActivator.1.0.4\lib\sl4-wp71\SilverlightActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Device" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Servicemodel.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WriteableBitmapExWinPhone, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\WriteableBitmapEx.1.0.3.0\lib\sl4-wp71\WriteableBitmapExWinPhone.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\AccountImportContacts.cs" />
+    <Compile Include="Api\AccountRegisterDevice.cs" />
+    <Compile Include="Api\AccountSetSilenceMode.cs" />
+    <Compile Include="Api\AccountUnregisterDevice.cs" />
+    <Compile Include="Api\AuthCheckPhone.cs" />
+    <Compile Include="Api\AuthConfirm.cs" />
+    <Compile Include="Api\AuthSignUp.cs" />
+    <Compile Include="Api\DialogsGet.cs" />
+    <Compile Include="Api\ExecuteDialogs.cs" />
+    <Compile Include="Api\FriendsAdd.cs" />
+    <Compile Include="Api\FriendsDelete.cs" />
+    <Compile Include="Api\FriendsDeleteAllRequests.cs" />
+    <Compile Include="Api\FriendsGetByPhones.cs" />
+    <Compile Include="Api\FriendsGetRequests.cs" />
+    <Compile Include="Api\FriendsGetSuggestions.cs" />
+    <Compile Include="Api\GetCounters.cs" />
+    <Compile Include="Api\GetStatInfo.cs" />
+    <Compile Include="Api\GetUserSettings.cs" />
+    <Compile Include="Api\MessagesGetUnread.cs" />
+    <Compile Include="Api\MessagesSearch.cs" />
+    <Compile Include="Api\PhotosGetMessagesUploadServer.cs" />
+    <Compile Include="Api\PhotosGetProfileUploadServer.cs" />
+    <Compile Include="Api\PhotosSaveMessagesPhoto.cs" />
+    <Compile Include="Api\PhotosSaveProfilePhoto.cs" />
+    <Compile Include="Api\UsersSearch.cs" />
+    <Compile Include="Api\VideoGet.cs" />
+    <Compile Include="AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppResources.ru-RU.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.ru-RU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Cache\ContactsCache.cs" />
+    <Compile Include="Cache\UsersCache.cs" />
+    <Compile Include="Entities\AttachmentType.cs" />
+    <Compile Include="Entities\AttachmentViewModel.cs" />
+    <Compile Include="Entities\ChatViewModel.cs" />
+    <Compile Include="Entities\ContactsByFirstName.cs" />
+    <Compile Include="Entities\CurrentUserInfo.cs" />
+    <Compile Include="Entities\EntitiesHelpers.cs" />
+    <Compile Include="Entities\GroupToBrushValueConverter.cs" />
+    <Compile Include="Entities\ISearchable.cs" />
+    <Compile Include="Entities\MessagesMenuModel.cs" />
+    <Compile Include="Entities\MessageViewModel.cs" />
+    <Compile Include="Entities\FriendByFirstName.cs" />
+    <Compile Include="Entities\PeopleInGroup.cs" />
+    <Compile Include="Entities\PhoneContact.cs" />
+    <Compile Include="Entities\SearchDialogViewModel.cs" />
+    <Compile Include="Entities\SearchResultsByType.cs" />
+    <Compile Include="Infrastructure\GlobalIndicator.cs" />
+    <Compile Include="Infrastructure\LocalizedStrings.cs" />
+    <Compile Include="Infrastructure\MosaicPictureGenerator.cs" />
+    <Compile Include="Entities\StateCounter.cs" />
+    <Compile Include="Infrastructure\TransliteHelper.cs" />
+    <Compile Include="Infrastructure\WindowsPhoneHelpers.cs" />
+    <Compile Include="Json\InitializationResponse.cs" />
+    <Compile Include="Json\MessageId.cs" />
+    <Compile Include="Json\MessagesUploadServer.cs" />
+    <Compile Include="Json\SentAvPhoto.cs" />
+    <Compile Include="Json\SentPhoto.cs" />
+    <Compile Include="Json\StatResponse.cs" />
+    <Compile Include="Json\SuccessEntity.cs" />
+    <Compile Include="Api\MessagesGetById.cs" />
+    <Compile Include="Json\UploadPhotoAttachment.cs" />
+    <Compile Include="Json\UploadProfilePhoto.cs" />
+    <Compile Include="Services\EntityService.cs" />
+    <Compile Include="Services\LongPollService.cs" />
+    <Compile Include="Api\LongPollServerRequest.cs" />
+    <Compile Include="Api\MessagesAddChatUser.cs" />
+    <Compile Include="Api\MessagesCreateChat.cs" />
+    <Compile Include="Api\MessagesDelete.cs" />
+    <Compile Include="Api\MessagesDeleteDialog.cs" />
+    <Compile Include="Api\MessagesEditChat.cs" />
+    <Compile Include="Api\MessagesGet.cs" />
+    <Compile Include="Api\MessagesGetChatUsers.cs" />
+    <Compile Include="Api\MessagesGetLastActivity.cs" />
+    <Compile Include="Api\MessagesGetLongPollHistory.cs" />
+    <Compile Include="Api\MessagesGetLongPollServer.cs" />
+    <Compile Include="Api\MessagesMarkAsNew.cs" />
+    <Compile Include="Api\MessagesMarkAsRead.cs" />
+    <Compile Include="Api\MessagesRemoveChatUser.cs" />
+    <Compile Include="Api\MessagesRestore.cs" />
+    <Compile Include="Api\MessagesSearchDialogs.cs" />
+    <Compile Include="Api\MessagesSend.cs" />
+    <Compile Include="Api\MessagesSetActivity.cs" />
+    <Compile Include="Api\UsersGet.cs" />
+    <Compile Include="Cache\CacheHelpers.cs" />
+    <Compile Include="Cache\ICollectionCache.cs" />
+    <Compile Include="Cache\IDictionaryCache.cs" />
+    <Compile Include="Cache\ImageCache.cs" />
+    <Compile Include="Entities\Attachment.cs" />
+    <Compile Include="Cache\DialogsCache.cs" />
+    <Compile Include="Cache\FriendsCache.cs" />
+    <Compile Include="Cache\MessagesCache.cs" />
+    <Compile Include="Entities\FriendViewModel.cs" />
+    <Compile Include="Infrastructure\CommonHelper.cs" />
+    <Compile Include="Infrastructure\AsyncAvatarsLoader.cs" />
+    <Compile Include="Infrastructure\APIErrorHandler.cs" />
+    <Compile Include="Infrastructure\Events.cs" />
+    <Compile Include="Infrastructure\MD5.cs" />
+    <Compile Include="Infrastructure\MD5Managed.cs" />
+    <Compile Include="Infrastructure\ResourceHelper.cs" />
+    <Compile Include="Services\UpdatesService.cs" />
+    <Compile Include="Json\ActivityStatus.cs" />
+    <Compile Include="Json\APIError.cs" />
+    <Compile Include="Api\Authorizer.cs" />
+    <Compile Include="Api\ErrorCode.cs" />
+    <Compile Include="Api\FriendsGet.cs" />
+    <Compile Include="AppServiceProvider.cs" />
+    <Compile Include="App_Start\StorageInitializer.cs" />
+    <Compile Include="Controls\RelativeAnimatingContentControl.cs" />
+    <Compile Include="Api\APIRequest.cs" />
+    <Compile Include="Infrastructure\IProtectData.cs" />
+    <Compile Include="Infrastructure\ProtectDataAdapter.cs" />
+    <Compile Include="Json\AttachmentsUpdate.cs" />
+    <Compile Include="Json\AudioAttachment.cs" />
+    <Compile Include="Json\AuthConfirmEntity.cs" />
+    <Compile Include="Json\Dialog.cs" />
+    <Compile Include="Json\FriendRequestEntity.cs" />
+    <Compile Include="Json\FriendRequestsResponse.cs" />
+    <Compile Include="Json\FriendRequestsWithMessagesResponse.cs" />
+    <Compile Include="Json\LongPollHistoryResponse.cs" />
+    <Compile Include="Json\LongPollServerInfo.cs" />
+    <Compile Include="Json\MessagesResponse.cs" />
+    <Compile Include="Json\DocAttachment.cs" />
+    <Compile Include="Json\GeoAttachment.cs" />
+    <Compile Include="Json\Message.cs" />
+    <Compile Include="Json\MutualFriend.cs" />
+    <Compile Include="Json\PhotoAttachment.cs" />
+    <Compile Include="Json\Place.cs" />
+    <Compile Include="Json\ProfileInfo.cs" />
+    <Compile Include="Json\SearchResult.cs" />
+    <Compile Include="Json\SerializeHelper.cs" />
+    <Compile Include="Infrastructure\Settings.cs" />
+    <Compile Include="Infrastructure\VKWebClient.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Json\Friend.cs" />
+    <Compile Include="Json\AuthError.cs" />
+    <Compile Include="Json\AuthSucceeded.cs" />
+    <Compile Include="Json\CollectionResponses.cs" />
+    <Compile Include="Json\SidData.cs" />
+    <Compile Include="Json\Update.cs" />
+    <Compile Include="Json\UpdatesResponse.cs" />
+    <Compile Include="Json\UserInfo.cs" />
+    <Compile Include="Json\UsersInfoResponse.cs" />
+    <Compile Include="Json\VideoAttachment.cs" />
+    <Compile Include="Services\IApiService.cs" />
+    <Compile Include="Services\PushNotifications.cs" />
+    <Compile Include="Views\AttachmentsPage.xaml.cs">
+      <DependentUpon>AttachmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaptchaDialog.xaml.cs">
+      <DependentUpon>CaptchaDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChatPage.xaml.cs">
+      <DependentUpon>ChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChatSettingsPage.xaml.cs">
+      <DependentUpon>ChatSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactsPage.xaml.cs">
+      <DependentUpon>ContactsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataTemplateSelector.cs" />
+    <Compile Include="Views\DialogsPage.xaml.cs">
+      <DependentUpon>DialogsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendRequestPage.xaml.cs">
+      <DependentUpon>FriendRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendRequestsPage.xaml.cs">
+      <DependentUpon>FriendRequestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendsCategoryTemplateSelector.cs" />
+    <Compile Include="Views\FriendsPage.xaml.cs">
+      <DependentUpon>FriendsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\GlobalSearchPage.xaml.cs">
+      <DependentUpon>GlobalSearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GroupChatPage.xaml.cs">
+      <DependentUpon>GroupChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntToVisibilityConverter.cs" />
+    <Compile Include="Views\MessagesMenuView.xaml.cs">
+      <DependentUpon>MessagesMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessageTemplateSelector.cs" />
+    <Compile Include="Views\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchDialogsPage.xaml.cs">
+      <DependentUpon>SearchDialogsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddChatPage.xaml.cs">
+      <DependentUpon>AddChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchResultCategoryTemplateSelector.cs" />
+    <Compile Include="Views\SelectionConverter.cs" />
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Views\AttachmentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaptchaDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChatSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ContactsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FriendRequestPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FriendRequestsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FriendsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GlobalSearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GroupChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessagesMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SearchDialogsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SignUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LargeAppIcon.png" />
+    <Resource Include="Images\SmallAppIcon.png" />
+    <Resource Include="Images\Dot_Light.png" />
+    <Resource Include="Images\bigtick_Light.png" />
+    <Content Include="Resources\Untitled.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\tick_b.png" />
+    <Resource Include="Images\UnreadMessages_Icon.png" />
+    <Resource Include="Images\UnreadMessages_Icon_Light.png" />
+    <Resource Include="Images\VK_logotype.png" />
+    <Resource Include="Images\VK_logotype_Light.png" />
+    <Resource Include="App_Readme\Content\StorageInitializer.png" />
+    <Resource Include="App_Readme\Content\CloudTableInterfaces.png" />
+    <Resource Include="App_Readme\Content\CloudStorageClientResolver.png" />
+    <Resource Include="App_Readme\Content\CloudQueueInterfaces.png" />
+    <Resource Include="App_Readme\Content\CloudBlobInterfaces.png" />
+    <Content Include="App_Readme\Content\Site.css" />
+    <Content Include="App_Readme\Phone.Storage.Readme.htm" />
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\Letter.png" />
+    <Resource Include="Images\VKHeader.png" />
+    <Resource Include="Images\Light_Background.png" />
+    <Resource Include="Images\Map_Pin.png" />
+    <Resource Include="Images\Photo_Placeholder.png" />
+    <Resource Include="Images\Requests_Icon.png" />
+    <Resource Include="Images\Requests_Icon_Light.png" />
+    <Content Include="Images\Appbar_Icons\appbar.add.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-1.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-10.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-2.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-3.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-4.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-5.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-6.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-7.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-8.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.attachments-9.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.cancel.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.checkin.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.delete.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.feature.camera.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.feature.search.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.forward.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.manage.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.minus.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.overflowdots.png" />
+    <Content Include="Images\Appbar_Icons\appbar.refresh.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.save.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.send.text.rest.png" />
+    <Content Include="Images\Appbar_Icons\appbar.transport.pause.rest.png" />
+    <Resource Include="Images\Play.png" />
+    <Resource Include="Images\Dot.png" />
+    <Resource Include="Images\Pause.png" />
+    <Resource Include="Images\bigtick.png" />
+    <Resource Include="Images\Close.png" />
+    <Content Include="Images\SplashScreenImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppResources.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account" xml:space="preserve">
+    <value>аккаунт</value>
+  </data>
+  <data name="AddFriendButton" xml:space="preserve">
+    <value>Добавить в друзья</value>
+  </data>
+  <data name="AddPerson" xml:space="preserve">
+    <value>добавить</value>
+  </data>
+  <data name="AddDialog" xml:space="preserve">
+    <value>создать</value>
+  </data>
+  <data name="AddButton" xml:space="preserve">
+    <value>добавить</value>
+  </data>
+  <data name="RemovePerson" xml:space="preserve">
+    <value>исключить</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>изменить</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>сохранить</value>
+  </data>
+  <data name="LeaveChat" xml:space="preserve">
+    <value>покинуть беседу</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Беседа</value>
+  </data>
+  <data name="AttachmentLabel" xml:space="preserve">
+    <value>Вложение</value>
+  </data>
+  <data name="AudioContentLabel" xml:space="preserve">
+    <value>Аудиозапись</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="CallPhone" xml:space="preserve">
+    <value>позвонить</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>отклонить</value>
+  </data>
+  <data name="ChangeChatLabel" xml:space="preserve">
+    <value>Изменить название беседы</value>
+  </data>
+  <data name="NameChatLabel" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="ChangePhotoButton" xml:space="preserve">
+    <value>Изменить фотографию</value>
+  </data>
+  <data name="ChoosePhotoButton" xml:space="preserve">
+    <value>выбрать фото из галереи</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="ContactsTab" xml:space="preserve">
+    <value>контакты</value>
+  </data>
+  <data name="DeclineRequestButton" xml:space="preserve">
+    <value>отклонить заявку</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>удалить</value>
+  </data>
+  <data name="DeleteFriendButton" xml:space="preserve">
+    <value>удалить из друзей</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Вы сможете бесплатно обмениваться мгновенными сообщениями с друзьями</value>
+  </data>
+  <data name="DisableNotificationFormatMessage" xml:space="preserve">
+    <value>Отключить звуковые уведомления на {0}</value>
+  </data>
+  <data name="DisableSoundOneHour" xml:space="preserve">
+    <value>не беспокоить в течение часа</value>
+  </data>
+  <data name="DisableSoundSeveralHours" xml:space="preserve">
+    <value>не беспокоить 8 часов</value>
+  </data>
+  <data name="DocumentContentLabel" xml:space="preserve">
+    <value>Документ</value>
+  </data>
+  <data name="ErrorAuthorization" xml:space="preserve">
+    <value>Неверные данные. Пожалуйста, убедитесь, что телефон или email и пароль введены правильно и повторите попытку.</value>
+  </data>
+  <data name="ErrorUploading" xml:space="preserve">
+    <value>Ошибка загрузки</value>
+  </data>
+  <data name="ForwardButton" xml:space="preserve">
+    <value>переслать</value>
+  </data>
+  <data name="ForwardedContentLabel" xml:space="preserve">
+    <value>Пересланное сообщение</value>
+  </data>
+  <data name="FriendRequests" xml:space="preserve">
+    <value>заявки в друзья ({0})</value>
+  </data>
+  <data name="Friends" xml:space="preserve">
+    <value>Друзья</value>
+  </data>
+  <data name="FriendsTab" xml:space="preserve">
+    <value>друзья</value>
+  </data>
+  <data name="GeolocationMapUriFormatMessage" xml:space="preserve">
+    <value>http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&amp;zoom=11&amp;size=320x240&amp;sensor=false</value>
+  </data>
+  <data name="InAppNotificationsLabel" xml:space="preserve">
+    <value>Оповещения в приложении</value>
+  </data>
+  <data name="InviteFriend" xml:space="preserve">
+    <value>пригласить друга</value>
+  </data>
+  <data name="IsTypingLabel" xml:space="preserve">
+    <value>{0} набирает сообщение...</value>
+  </data>
+  <data name="LoadingMessagesLabel" xml:space="preserve">
+    <value>Сообщения загружаются..</value>
+  </data>
+  <data name="LocContentLabel" xml:space="preserve">
+    <value>Карта</value>
+  </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>войти</value>
+  </data>
+  <data name="LogoutButton" xml:space="preserve">
+    <value>выйти</value>
+  </data>
+  <data name="MessageNotSentLabel" xml:space="preserve">
+    <value>не удалось отправить.</value>
+  </data>
+  <data name="MessagesTab" xml:space="preserve">
+    <value>сообщения</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Ваше имя</value>
+  </data>
+  <data name="LastNameLabel" xml:space="preserve">
+    <value>Ваша фамилия</value>
+  </data>
+  <data name="NewAccountLabel" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="NoMessagesLabel" xml:space="preserve">
+    <value>Сообщений пока нет</value>
+  </data>
+  <data name="NumberMemebersFormatMessage" xml:space="preserve">
+    <value>{0} собеседников</value>
+  </data>
+  <data name="NumberMessagesInChat" xml:space="preserve">
+    <value>{0} сообщений</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Онлайн</value>
+  </data>
+  <data name="OnlineLabel" xml:space="preserve">
+    <value>Онлайн</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="PeopleMayKnowLabel" xml:space="preserve">
+    <value>возможные друзья</value>
+  </data>
+  <data name="PhoneNumberLabel" xml:space="preserve">
+    <value>Номер Вашего телефона</value>
+  </data>
+  <data name="AuthLoginLabel" xml:space="preserve">
+    <value>Номер телефона, логин или e-mail</value>
+  </data>
+  <data name="PhotoContentLabel" xml:space="preserve">
+    <value>Фотография</value>
+  </data>
+  <data name="PushNotifications" xml:space="preserve">
+    <value>push-оповещения</value>
+  </data>
+  <data name="RemoveAttachmentButton" xml:space="preserve">
+    <value>Удалить вложение</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Заявки</value>
+  </data>
+  <data name="SearchButton" xml:space="preserve">
+    <value>поиск</value>
+  </data>
+  <data name="RefreshButton" xml:space="preserve">
+    <value>обновить</value>
+  </data>
+  <data name="SearchDescription" xml:space="preserve">
+    <value>Вы можете искать среди Ваших контактов и друзей.</value>
+  </data>
+  <data name="SendInvitationButton" xml:space="preserve">
+    <value>выслать приглашение</value>
+  </data>
+  <data name="SendMessageButton" xml:space="preserve">
+    <value>отправить сообщение</value>
+  </data>
+  <data name="SendButton" xml:space="preserve">
+    <value>отправить</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>настройки</value>
+  </data>
+  <data name="ShareLocationButton" xml:space="preserve">
+    <value>прикрепить местоположение</value>
+  </data>
+  <data name="SignupButton" xml:space="preserve">
+    <value>зарегистрироваться</value>
+  </data>
+  <data name="Sound" xml:space="preserve">
+    <value>Звук</value>
+  </data>
+  <data name="SoundNotificationsDisabledUntilFormatMessage" xml:space="preserve">
+    <value>Звуковые уведомления отключены до {0}</value>
+  </data>
+  <data name="SyncContactsButton" xml:space="preserve">
+    <value>синхронизировать контакты</value>
+  </data>
+  <data name="SyncDescription" xml:space="preserve">
+    <value>Вы можете синхронизировать список друзей VK с записной книжкой Вашего телефона</value>
+  </data>
+  <data name="TakePhotoButton" xml:space="preserve">
+    <value>Сделать снимок с камеры</value>
+  </data>
+  <data name="Toast" xml:space="preserve">
+    <value>Всплывающая строка</value>
+  </data>
+  <data name="TryAgainLabel" xml:space="preserve">
+    <value>Повторить попытку</value>
+  </data>
+  <data name="UploadingAttachmentsLabel" xml:space="preserve">
+    <value>Вложения загружаются..</value>
+  </data>
+  <data name="UserNotRegistredDescription" xml:space="preserve">
+    <value>Пользователь ещё не зарегистрирован. Вы можете отправить ему приглашение.</value>
+  </data>
+  <data name="Vibrate" xml:space="preserve">
+    <value>Вибрация</value>
+  </data>
+  <data name="VideoContentLabel" xml:space="preserve">
+    <value>Видеозапись</value>
+  </data>
+  <data name="WasOnlineFormatMessage" xml:space="preserve">
+    <value>был в сети {0} назад</value>
+  </data>
+  <data name="WriteMessageHint" xml:space="preserve">
+    <value>введите сообщение</value>
+  </data>
+  <data name="YourPasswordLabel" xml:space="preserve">
+    <value>Ваш пароль</value>
+  </data>
+  <data name="CaptchaLabel" xml:space="preserve">
+    <value>Введите символы с картинки</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="RequestSMS" xml:space="preserve">
+    <value>запросить смс ещё раз</value>
+  </data>
+  <data name="SmsCodeLabel" xml:space="preserve">
+    <value>Введите код безопасности из СМС</value>
+  </data>
+  <data name="ConfirmPasswordLabel" xml:space="preserve">
+    <value>Подтвердите пароль</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Пароль должен быть не меньше 6 символов и совпадать с подтвержденным паролем.</value>
+  </data>
+  <data name="PhoneInUse" xml:space="preserve">
+    <value>Телефонный номер введен неправильно, либо уже используется.</value>
+  </data>
+  <data name="SignUpFailed" xml:space="preserve">
+    <value>Не удалось зарегистрировать пользователя. Один из параметров не верен, либо пользователь уже существует.</value>
+  </data>
+  <data name="InternalApiError" xml:space="preserve">
+    <value>Произошла ошибка. Пожалуйста, обновите приложение до последней версии.</value>
+  </data>
+  <data name="RemoveDialog" xml:space="preserve">
+    <value>удалить диалог</value>
+  </data>
+  <data name="WatermarkedTextBox_DefaultWatermarkText" xml:space="preserve">
+    <value>Введите текст...</value>
+  </data>
+  <data name="WatermarkedTextBox_TemplatePartIsOfIncorrectType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Нет в сети</value>
+  </data>
+  <data name="TotalDays" xml:space="preserve">
+    <value> дн.</value>
+  </data>
+  <data name="TotalHours" xml:space="preserve">
+    <value> ч.</value>
+  </data>
+  <data name="TotalMinutes" xml:space="preserve">
+    <value> мин.</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>вчера</value>
+  </data>
+  <data name="OutMessageNotRead" xml:space="preserve">
+    <value>Не прочитано</value>
+  </data>
+  <data name="ResendButton" xml:space="preserve">
+    <value>Повторить</value>
+  </data>
+  <data name="GPSNotEnabled" xml:space="preserve">
+    <value>Пожалуйста включите службу поиска местоположения в Настройки -&gt; Местоположение -&gt; Включить службу местоположений.</value>
+  </data>
+  <data name="AppIsLoadingItems" xml:space="preserve">
+    <value>Приложение загружает некоторые элементы с сервера Vkontakte. Пожалуйста подождите немного и повторите действие.</value>
+  </data>
+  <data name="ApplicationNotifications" xml:space="preserve">
+    <value>оповещения в приложении</value>
+  </data>
+  <data name="UploadPhotoError" xml:space="preserve">
+    <value>Во время загрузки фотографии произошла ошибка. Загрузка остановлена.</value>
+  </data>
+  <data name="CopyButton" xml:space="preserve">
+    <value>копировать</value>
+  </data>
+  <data name="SelectButton" xml:space="preserve">
+    <value>выбрать</value>
+  </data>
+  <data name="ForwardMessagesDescription" xml:space="preserve">
+    <value>Выбранные сообщения были помечены для пересылки и будут отправлены как только вы нажмете кнопку Отправить в любом чате или диалоге.</value>
+  </data>
+  <data name="LocationAttachmentDescription" xml:space="preserve">
+    <value>Ваше местоположение сохранено и будет отправлено по нажатию кнопки Отправить.</value>
+  </data>
+  <data name="AttachmentsLabel" xml:space="preserve">
+    <value>вложения</value>
+  </data>
+  <data name="NumberAttachments" xml:space="preserve">
+    <value>{0} вложений</value>
+  </data>
+  <data name="CantRemoveThisUser" xml:space="preserve">
+    <value>Вы не обладаете достаточными правами для удаления выбранного пользователя.</value>
+  </data>
+  <data name="CantAddThisUser" xml:space="preserve">
+    <value>Вы не обладаете достаточными правами для добавления выбранного пользователя.</value>
+  </data>
+  <data name="SelectUserCaption" xml:space="preserve">
+    <value>Выберите друга</value>
+  </data>
+  <data name="CanNotSaveThisChange" xml:space="preserve">
+    <value>Не удалось сохранить изменение.</value>
+  </data>
+  <data name="DialogsTab" xml:space="preserve">
+    <value>диалоги</value>
+  </data>
+  <data name="IncomeMessage" xml:space="preserve">
+    <value>Полученное</value>
+  </data>
+  <data name="SentMessage" xml:space="preserve">
+    <value>Отправленное</value>
+  </data>
+  <data name="FriendRequest" xml:space="preserve">
+    <value>заявка в друзья</value>
+  </data>
+  <data name="GlobalSearchDescription" xml:space="preserve">
+    <value>Вы можете искать своих друзей и знакомых среди всех пользователей.</value>
+  </data>
+  <data name="CreateChat" xml:space="preserve">
+    <value>создать чат</value>
+  </data>
+  <data name="CreateChatError" xml:space="preserve">
+    <value>Чтобы создать чат введите название и выберите пользователей.</value>
+  </data>
+  <data name="ContactsGroup" xml:space="preserve">
+    <value>контакты</value>
+  </data>
+  <data name="FriendsGroup" xml:space="preserve">
+    <value>друзья</value>
+  </data>
+  <data name="OtherUsersGroup" xml:space="preserve">
+    <value>другие пользователи</value>
+  </data>
+  <data name="PossibleFriendsGroup" xml:space="preserve">
+    <value>возможные друзья</value>
+  </data>
+  <data name="LoadMoreLabel" xml:space="preserve">
+    <value>Загрузить ещё...</value>
+  </data>
+  <data name="PressBackLabel" xml:space="preserve">
+    <value>Нажмите Назад чтобы закрыть</value>
+  </data>
+  <data name="CantCreateChat" xml:space="preserve">
+    <value>Такой чат не может быть создан.</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Подключение...</value>
+  </data>
+  <data name="AddingChatPage" xml:space="preserve">
+    <value>Создание чата...</value>
+  </data>
+  <data name="ContactsSyncing" xml:space="preserve">
+    <value>Синхронизация контактов...</value>
+  </data>
+  <data name="GettingLocation" xml:space="preserve">
+    <value>Поиск местоположения...</value>
+  </data>
+  <data name="SavingChanges" xml:space="preserve">
+    <value>Сохранение изменений...</value>
+  </data>
+  <data name="SearchFriendRequests" xml:space="preserve">
+    <value>Поиск запросов в друзья...</value>
+  </data>
+  <data name="SendingMessage" xml:space="preserve">
+    <value>Отправка сообщения...</value>
+  </data>
+  <data name="UploadingPhoto" xml:space="preserve">
+    <value>Отправка фотографии...</value>
+  </data>
+  <data name="TwoMemebersFormatMessage" xml:space="preserve">
+    <value>{0} собеседника</value>
+  </data>
+</root>

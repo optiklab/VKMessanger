@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="SlXnaApp1.Views.CaptchaDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    Background="{StaticResource PhoneBackgroundBrush}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="350" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+        <StackPanel>
+            <Image
+                x:Name="CaptchaImage"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Stretch="UniformToFill"
+                Height="100"
+                Width="260"
+                Margin="12,24,0,0" />
+            <TextBlock
+                x:Name="LoginTextBoxLabel"
+                Foreground="Gray"
+                Text="{Binding Path=LocalizedResources.CaptchaLabel, Source={StaticResource LocalizedStrings}}"
+                Margin="12,24,12,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center" />
+            <TextBox
+                x:Name="CaptchaTextBox"
+                Text=""
+                HorizontalContentAlignment="Center"
+                TextChanged="CaptchaTextBox_TextChanged" />
+            <Button
+                x:Name="OkButton"
+                Template="{StaticResource SignInButtonTemplate}"
+                Content="{Binding Path=LocalizedResources.OkButton, Source={StaticResource LocalizedStrings}}"
+                Margin="12,24,12,0"
+                MinWidth="100"
+                HorizontalAlignment="Left"
+                IsEnabled="False" />
+        </StackPanel>
+    </Grid>
+</UserControl>

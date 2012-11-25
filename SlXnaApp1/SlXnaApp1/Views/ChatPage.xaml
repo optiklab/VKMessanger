@@ -1,0 +1,891 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SlXnaApp1.Views.ChatPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:local="clr-namespace:SlXnaApp1.Views;assembly=SlXnaApp1"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    d:DesignWidth="480"
+    d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    Background="{StaticResource PhoneContrastBackgroundBrush}"
+    shell:SystemTray.IsVisible="True"
+    BackKeyPress="PhoneApplicationPage_BackKeyPress">
+
+    <phone:PhoneApplicationPage.Resources>
+        <ControlTemplate
+            x:Key="PhoneDisabledTextBoxTemplate"
+            TargetType="TextBox">
+            <ContentControl
+                x:Name="ContentElement"
+                BorderThickness="0"
+                HorizontalContentAlignment="Stretch"
+                Margin="{StaticResource PhoneTextBoxInnerMargin}"
+                Padding="{TemplateBinding Padding}"
+                VerticalContentAlignment="Stretch"/>
+        </ControlTemplate>
+        <Style x:Key="InputBubbleStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+            <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="SelectionBackground" Value="{StaticResource PlayerForeBrush}"/>
+            <Setter Property="SelectionForeground" Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="Fill"
+                                                Storyboard.TargetName="BubbleBackground">
+                                                <DiscreteObjectKeyFrame
+                                                    KeyTime="0"
+                                                    Value="{StaticResource PhoneTextBoxEditBackgroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="Fill"
+                                                Storyboard.TargetName="BubblePoint">
+                                                <DiscreteObjectKeyFrame
+                                                    KeyTime="0"
+                                                    Value="{StaticResource PhoneTextBoxEditBackgroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="Stroke"
+                                                Storyboard.TargetName="BubbleBackground">
+                                                <DiscreteObjectKeyFrame
+                                                    KeyTime="0"
+                                                    Value="{StaticResource PhoneTextBoxEditBorderColor}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="StrokeThickness"
+                                                Storyboard.TargetName="BubbleBackground">
+                                                <DiscreteObjectKeyFrame
+                                                    KeyTime="0"
+                                                    Value="2"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border
+                                x:Name="EnabledBorder"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid Name="InputBubbleGrid">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="14" />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Rectangle
+                                            x:Name="BubbleBackground"
+                                            Grid.RowSpan="2"
+                                            Fill="{StaticResource PhoneTextBoxBrush}" />
+                                        <ContentControl
+                                            x:Name="ContentElement"
+                                            BorderThickness="0"
+                                            HorizontalContentAlignment="Stretch"
+                                            Margin="12,6,12,6"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            VerticalContentAlignment="Stretch"/>
+                                    </Grid>
+                                    <Path
+                                        Name="BubblePoint"
+                                        Data="M0,0 L1,1 L1,0"
+                                        Fill="{StaticResource PhoneTextBoxBrush}"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,0,12,0"
+                                        Grid.Row="1"
+                                        Stretch="Fill"
+                                        UseLayoutRounding="False"
+                                        Width="16" />
+                                </Grid>
+                            </Border>
+                            <Border
+                                x:Name="DisabledOrReadonlyBorder"
+                                BorderBrush="{StaticResource PhoneDisabledBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="Transparent"
+                                Margin="{StaticResource PhoneTouchTargetOverhang}"
+                                Visibility="Collapsed">
+                                <TextBox
+                                    x:Name="DisabledOrReadonlyContent"
+                                    Background="Transparent"
+                                    Foreground="{StaticResource PhoneDisabledBrush}"
+                                    FontWeight="{TemplateBinding FontWeight}"
+                                    FontStyle="{TemplateBinding FontStyle}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    IsReadOnly="True"
+                                    SelectionForeground="{TemplateBinding SelectionForeground}"
+                                    SelectionBackground="{TemplateBinding SelectionBackground}"
+                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                    TextWrapping="{TemplateBinding TextWrapping}"
+                                    Text="{TemplateBinding Text}"
+                                    Template="{StaticResource PhoneDisabledTextBoxTemplate}"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid
+            x:Name="TitlePanel"
+            Grid.Row="0"
+            Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                x:Name="AppBarUserName"
+                Foreground="{StaticResource PhoneForegroundBrush}"
+                Text="{Binding Path=Name}"
+                Grid.Row="0"
+                Margin="6,5,5,0"
+                FontSize="{StaticResource PhoneFontSizeLarge}"
+                FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+            <TextBlock
+                x:Name="AppBarStatus"
+                Foreground="Gray"
+                Margin="6,0,5,5"
+                Text="{Binding Path=Status}"
+                Grid.Row="1" />
+        </Grid>
+        <!--ContentPanel -->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,12" Background="{StaticResource PhoneBackgroundBrush}">
+            <MediaElement
+                x:Name="AudioPlayer">
+            </MediaElement>
+            <!--Style="{StaticResource ListBoxMoreMessages}"-->
+            <ListBox
+                x:Name="MessagesPanel"
+                ItemsSource="{Binding Messages}"
+                Height="540"
+                Visibility="Visible"
+                SelectionMode="Single"
+                ManipulationCompleted="MessagesPanel_ManipulationCompleted">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <local:MessageTemplateSelector Content="{Binding}">
+                            <!-- Out message item template -->
+                            <local:MessageTemplateSelector.IsOutMessage>
+                                <DataTemplate>
+                                    <Grid
+                                        HorizontalAlignment="Stretch"
+                                        Margin="71,12,24,0">
+                                        <!--MinWidth="365"-->
+                                        <toolkit:ContextMenuService.ContextMenu>
+                                            <toolkit:ContextMenu>
+                                                <toolkit:MenuItem
+                                                    Header="{Binding Path=LocalizedResources.DeleteButton, Source={StaticResource LocalizedStrings}}"
+                                                    Click="RemoveButton_Click"/>
+                                                <toolkit:MenuItem
+                                                    Header="{Binding Path=LocalizedResources.ForwardButton, Source={StaticResource LocalizedStrings}}"
+                                                    Click="ForwardButton_Click"/>
+                                                <toolkit:MenuItem
+                                                    Header="{Binding Path=LocalizedResources.CopyButton, Source={StaticResource LocalizedStrings}}"
+                                                    Click="CopyButton_Click"/>
+                                            </toolkit:ContextMenu>
+                                        </toolkit:ContextMenuService.ContextMenu>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="14" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="29" />
+                                            <ColumnDefinition MinWidth="339" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel
+                                            Grid.Column="0"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Visibility="{Binding SelectedVisibility}">
+                                            <Image
+                                                Height="29"
+                                                Width="29"
+                                                Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                                                Source="/SlXnaApp1;component/Images/bigtick.png" />
+                                            <Image
+                                                Height="29"
+                                                Width="29"
+                                                Visibility="{StaticResource PhoneLightThemeVisibility}"
+                                                Source="/SlXnaApp1;component/Images/bigtick_Light.png" />
+                                        </StackPanel>
+                                        <Grid
+                                            HorizontalAlignment="Stretch"
+                                            Margin="0"
+                                            Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <!--Fill="#0b5a9b"-->
+                                            <Rectangle
+                                                HorizontalAlignment="Stretch"
+                                                Grid.RowSpan="3"
+                                                Fill="{StaticResource PhoneAccentBrush}">
+                                                <Rectangle.OpacityMask>
+                                                    <SolidColorBrush Color="Black" Opacity="0.75">
+                                                    </SolidColorBrush>
+                                                 </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <!-- Text message -->
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Text="{Binding Body}"
+                                                Foreground="White"
+                                                TextWrapping="Wrap"
+                                                MinWidth="330"
+                                                Margin="12,6,12,6" />
+                                            <!-- List of attachments -->
+                                            <ListBox
+                                                Grid.Row="1"
+                                                Margin="0,0,12,0"
+                                                x:Name="AttachmentsPanel"
+                                                ItemsSource="{Binding Attachments}"
+                                                Visibility="Visible">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid
+                                                            MinWidth="50">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Image
+                                                                Height="Auto"
+                                                                Visibility="{Binding Path=PhotoVisibility}"
+                                                                HorizontalAlignment="Center"
+                                                                Stretch="UniformToFill"
+                                                                Margin="12,0,0,0"
+                                                                Tap="Image_Tap"
+                                                                Source="{Binding Path=AttachPhoto}" />
+                                                            <Image
+                                                                Height="Auto"
+                                                                Width="Auto"
+                                                                Visibility="{Binding Path=MapPinVisibility}"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Stretch="None"
+                                                                Source="/SlXnaApp1;component/Images/Map_Pin.png" />
+                                                            <Image
+                                                                Width="75"
+                                                                Height="75"
+                                                                Visibility="{Binding Path=DocumentVisibility}"
+                                                                Stretch="Uniform"
+                                                                Margin="12,0,0,0"
+                                                                Source="/SlXnaApp1;component/Images/Photo_Placeholder.png" />
+                                                            <TextBlock
+                                                                Text="{Binding Duration}"
+                                                                HorizontalAlignment="Left"
+                                                                Margin="24,0,0,12"
+                                                                VerticalAlignment="Bottom"
+                                                                Visibility="{Binding Path=VideoPlayerVisibility}"
+                                                                FontSize="{StaticResource PhoneFontSizeLarge}" />
+                                                            <Button
+                                                                x:Name="PlayVideoButton"
+                                                                BorderThickness="0"
+                                                                Grid.Column="0"
+                                                                Height="90"
+                                                                Width="90"
+                                                                Visibility="{Binding Path=VideoPlayerVisibility}"
+                                                                Margin="0,0,0,6"
+                                                                VerticalAlignment="Bottom"
+                                                                HorizontalAlignment="Right"
+                                                                Tap="PlayVideo_Tap">
+                                                                <Image
+                                                                    Stretch="Uniform"
+                                                                    Height="48"
+                                                                    Width="48"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalAlignment="Center"
+                                                                    Source="/SlXnaApp1;component/Images/Play.png" />
+                                                            </Button>
+                                                            <Grid
+                                                                Grid.Row="1"
+                                                                Margin="0,0,0,0"
+                                                                Visibility="{Binding Path=AudioPlayerVisibility}">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Button
+                                                                    x:Name="PlayButton"
+                                                                    BorderThickness="0"
+                                                                    Grid.Column="0"
+                                                                    Height="90"
+                                                                    Width="90"
+                                                                    Margin="-10,0,-10,0"
+                                                                    VerticalAlignment="Top"
+                                                                    Tap="PlayAudio_Tap">
+                                                                    <Image
+                                                                        Stretch="Uniform"
+                                                                        Height="48"
+                                                                        Width="48"
+                                                                        VerticalAlignment="Center"
+                                                                        HorizontalAlignment="Center"
+                                                                        Source="/SlXnaApp1;component/Images/Play.png" />
+                                                                </Button>
+                                                                <StackPanel
+                                                                    Margin="0"
+                                                                    VerticalAlignment="Top"
+                                                                    Grid.Column="1">
+                                                                    <TextBlock
+                                                                        Text="{Binding Author}"
+                                                                        HorizontalAlignment="Left"
+                                                                        TextWrapping="Wrap"
+                                                                        FontSize="{StaticResource PhoneFontSizeMedium}" />
+                                                                    <TextBlock
+                                                                        TextWrapping="Wrap"
+                                                                        Text="{Binding Title}"
+                                                                        HorizontalAlignment="Left"
+                                                                        FontSize="{StaticResource PhoneFontSizeSmall}" />
+                                                                    <Grid
+                                                                        HorizontalAlignment="Left">
+                                                                        <ProgressBar
+                                                                            Style="{StaticResource ProgressBarStyle1}"
+                                                                            Background="Transparent"
+                                                                            Foreground="{StaticResource LoadingPlayerForeBrush}"
+                                                                            Margin="-12,0,0,0"
+                                                                            Height="40"
+                                                                            Width="292"
+                                                                            Value="{Binding LoadingProgress}" />
+                                                                        <ProgressBar
+                                                                            Style="{StaticResource ProgressBarStyle1}"
+                                                                            Background="{StaticResource PlayerBackBrush}"
+                                                                            Foreground="{StaticResource PlayerForeBrush}"
+                                                                            Margin="-12,0,0,0"
+                                                                            Minimum="0"
+                                                                            Maximum="100"
+                                                                            Height="40"
+                                                                            Width="292"
+                                                                            Value="{Binding Progress}" />
+                                                                    </Grid>
+                                                                </StackPanel>
+                                                            </Grid>
+                                                            <TextBlock
+                                                                Grid.Row="2"
+                                                                Text="{Binding Description}"
+                                                                Visibility="{Binding Path=PhotoVisibility}"
+                                                                HorizontalAlignment="Left"
+                                                                Foreground="{StaticResource GrayColorBrush}"
+                                                                Margin="12,6,0,0"
+                                                                FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                            <TextBlock
+                                                                Grid.Row="2"
+                                                                Text="{Binding Description}"
+                                                                Visibility="{Binding Path=DocumentVisibility}"
+                                                                HorizontalAlignment="Left"
+                                                                Foreground="{StaticResource GrayColorBrush}"
+                                                                Margin="12,6,0,0"
+                                                                FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                            <ListBox
+                                                                Grid.Row="3"
+                                                                Margin="0,0,0,0"
+                                                                x:Name="FwdPanel"
+                                                                ItemsSource="{Binding FwdMessages}"
+                                                                Visibility="{Binding Path=FwdVisibility}">
+                                                                <ListBox.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Grid
+                                                                            MinWidth="180">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <StackPanel
+                                                                                Margin="6,0,0,0"
+                                                                                Orientation="Horizontal"
+                                                                                HorizontalAlignment="Left">
+                                                                                <Border
+                                                                                    Width="3"
+                                                                                    Height="50"
+                                                                                    Background="Blue" />
+                                                                                <Image
+                                                                                    Width="50"
+                                                                                    Height="50"
+                                                                                    Stretch="Uniform"
+                                                                                    Margin="6,0,6,0"
+                                                                                    Source="{Binding Path=Photo}" />
+                                                                            </StackPanel>
+                                                                            <StackPanel
+                                                                                Grid.Column="1"
+                                                                                Orientation="Vertical">
+                                                                                <StackPanel
+                                                                                    Orientation="Horizontal">
+                                                                                    <TextBlock
+                                                                                        Text="{Binding FullName}"
+                                                                                        HorizontalAlignment="Left"
+                                                                                        FontWeight="Bold"
+                                                                                        FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                                                    <TextBlock
+                                                                                        Text="{Binding DateTime}"
+                                                                                        HorizontalAlignment="Left"
+                                                                                        Margin="6,0,0,0"
+                                                                                        Foreground="{StaticResource GrayColorBrush}"
+                                                                                        FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                                                </StackPanel>
+                                                                                <TextBlock
+                                                                                    Text="{Binding Body}"
+                                                                                    HorizontalAlignment="Left"
+                                                                                    TextWrapping="Wrap"
+                                                                                    Width="260"
+                                                                                    FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                                            </StackPanel>
+                                                                        </Grid>
+                                                                    </DataTemplate>
+                                                                </ListBox.ItemTemplate>
+                                                            </ListBox>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <!-- Is out message sent -->
+                                            <StackPanel
+                                                Orientation="Horizontal"
+                                                HorizontalAlignment="Left"
+                                                Margin="12,6,12,6"
+                                                Grid.Row="2">
+                                                <TextBlock
+                                                    Grid.Row="2"
+                                                    Text="{Binding Path=LocalizedResources.MessageNotSentLabel, Source={StaticResource LocalizedStrings}}"
+                                                    Visibility="{Binding NotSentVisibility}"
+                                                    Foreground="#99FFFFFF"
+                                                    FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                <!-- Button to resend -->
+                                                <TextBlock
+                                                    x:Name="ResendSelectedMessage"
+                                                    Grid.Row="2"
+                                                    Text="{Binding Path=LocalizedResources.ResendButton, Source={StaticResource LocalizedStrings}}"
+                                                    TextDecorations="Underline"
+                                                    Visibility="{Binding NotSentVisibility}"
+                                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                                    Margin="6,0,0,0"
+                                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                                    Tap="ResendSelectedMessage_Tap" />
+                                            </StackPanel>
+                                            <!-- Is out message read -->
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Text="{Binding Path=LocalizedResources.OutMessageNotRead, Source={StaticResource LocalizedStrings}}"
+                                                Visibility="{Binding NotReadVisibility}"
+                                                Foreground="#99FFFFFF"
+                                                HorizontalAlignment="Left"
+                                                Margin="12,6,12,6"
+                                                FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                            <StackPanel
+                                                Orientation="Horizontal"
+                                                HorizontalAlignment="Right"
+                                                Margin="12,6,12,6"
+                                                Grid.Row="2">
+                                                <!-- Tick about "not read" status -->
+                                                <Image
+                                                    MaxWidth="19"
+                                                    MaxHeight="19"
+                                                    Visibility="{Binding NotReadVisibility}"
+                                                    Stretch="UniformToFill"
+                                                    Margin="0,0,6,0"
+                                                    Source="/SlXnaApp1;component/Images/tick_b.png" />
+                                                <!-- Time of message -->
+                                                <TextBlock
+                                                    Text="{Binding DateTime}"
+                                                    Foreground="#99FFFFFF"
+                                                    Margin="6,0,0,0"
+                                                    FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                            </StackPanel>
+                                        </Grid>
+                                        <!-- Triangle of the message rectangle -->
+                                        <Path
+                                            Name="BubblePoint"
+                                            Data="M0,0 L1,1 L1,0"
+                                            HorizontalAlignment="Right"
+                                            Margin="0,0,12,0"
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Stretch="Fill"
+                                            Fill="{StaticResource PhoneAccentBrush}"
+                                            UseLayoutRounding="False"
+                                            Width="16">
+                                            <Path.OpacityMask>
+                                                <SolidColorBrush Color="Black" Opacity="0.75">
+                                                </SolidColorBrush>
+                                            </Path.OpacityMask>
+                                        </Path>
+                                    </Grid>
+                                </DataTemplate>
+                            </local:MessageTemplateSelector.IsOutMessage>
+                            <!-- Item template for input message -->
+                            <local:MessageTemplateSelector.IsInMessage>
+                                <DataTemplate>
+                                    <Grid
+                                        Margin="12,0,100,12"
+                                        MinWidth="365">
+                                        <toolkit:ContextMenuService.ContextMenu>
+                                            <toolkit:ContextMenu>
+                                                <toolkit:MenuItem
+                                                    Header="{Binding Path=LocalizedResources.DeleteButton, Source={StaticResource LocalizedStrings}}"
+                                                    Click="RemoveButton_Click"/>
+                                                <toolkit:MenuItem
+                                                    Header="{Binding Path=LocalizedResources.ForwardButton, Source={StaticResource LocalizedStrings}}"
+                                                    Click="ForwardButton_Click"/>
+                                                <toolkit:MenuItem
+                                                    Header="{Binding Path=LocalizedResources.CopyButton, Source={StaticResource LocalizedStrings}}"
+                                                    Click="CopyButton_Click"/>
+                                            </toolkit:ContextMenu>
+                                        </toolkit:ContextMenuService.ContextMenu>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="14" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="29" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            VerticalAlignment="Top"
+                                            Visibility="{Binding SelectedVisibility}">
+                                            <Image
+                                                Height="29"
+                                                Width="29"
+                                                Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                                                Source="/SlXnaApp1;component/Images/bigtick.png" />
+                                            <Image
+                                                Height="29"
+                                                Width="29"
+                                                Visibility="{StaticResource PhoneLightThemeVisibility}"
+                                                Source="/SlXnaApp1;component/Images/bigtick_Light.png" />
+                                        </StackPanel>
+                                        <!--Fill="#1080dd"-->
+                                        <Path
+                                            Data="M0,0 L1,1 L0,1"
+                                            Fill="{StaticResource PhoneAccentBrush}"
+                                            HorizontalAlignment="Left"
+                                            Margin="12,0,0,0"
+                                            Stretch="Fill"
+                                            UseLayoutRounding="False"
+                                            Width="16">
+                                            <Path.OpacityMask>
+                                                <SolidColorBrush Color="Black" Opacity="0.95" />
+                                            </Path.OpacityMask>
+                                        </Path>
+                                        <Grid
+                                            Grid.Row="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Rectangle
+                                                MinWidth="365"
+                                                HorizontalAlignment="Stretch"
+                                                Grid.RowSpan="3"
+                                                Fill="{StaticResource PhoneAccentBrush}">
+                                                <Rectangle.OpacityMask>
+                                                    <SolidColorBrush Color="Black" Opacity="0.95" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock
+                                                Text="{Binding Body}"
+                                                Grid.Row="0"
+                                                Foreground="White"
+                                                TextWrapping="Wrap"
+                                                Margin="6" />
+                                            <!-- List of attachments -->
+                                            <ListBox
+                                                Grid.Row="1"
+                                                x:Name="AttachmentsPanel"
+                                                ItemsSource="{Binding Attachments}"
+                                                Visibility="Visible">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid
+                                                            MinWidth="50">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Image
+                                                                MaxWidth="320"
+                                                                Height="Auto"
+                                                                Visibility="{Binding Path=PhotoVisibility}"
+                                                                HorizontalAlignment="Center"
+                                                                Stretch="UniformToFill"
+                                                                Margin="12,0,12,0"
+                                                                Tap="Image_Tap"
+                                                                Source="{Binding Path=AttachPhoto}" />
+                                                            <Image
+                                                                Height="Auto"
+                                                                Width="Auto"
+                                                                Visibility="{Binding Path=MapPinVisibility}"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Stretch="None"
+                                                                Source="/SlXnaApp1;component/Images/Map_Pin.png" />
+                                                            <Image
+                                                                Width="75"
+                                                                Height="75"
+                                                                Visibility="{Binding Path=DocumentVisibility}"
+                                                                Stretch="Uniform"
+                                                                Margin="12,0,12,0"
+                                                                Source="/SlXnaApp1;component/Images/Photo_Placeholder.png" />
+                                                            <TextBlock
+                                                                Text="{Binding Duration}"
+                                                                HorizontalAlignment="Left"
+                                                                Margin="24,0,0,12"
+                                                                VerticalAlignment="Bottom"
+                                                                Visibility="{Binding Path=VideoPlayerVisibility}"
+                                                                FontSize="{StaticResource PhoneFontSizeLarge}" />
+                                                            <Button
+                                                                x:Name="PlayVideoButton"
+                                                                BorderThickness="0"
+                                                                Grid.Column="0"
+                                                                Height="90"
+                                                                Width="90"
+                                                                Visibility="{Binding Path=VideoPlayerVisibility}"
+                                                                Margin="0,0,12,6"
+                                                                VerticalAlignment="Bottom"
+                                                                HorizontalAlignment="Right"
+                                                                Tap="PlayVideo_Tap">
+                                                                <Image
+                                                                    Stretch="Uniform"
+                                                                    Height="48"
+                                                                    Width="48"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalAlignment="Center"
+                                                                    Source="/SlXnaApp1;component/Images/Play.png" />
+                                                            </Button>
+                                                            <Grid
+                                                                Grid.Row="1"
+                                                                Visibility="{Binding Path=AudioPlayerVisibility}">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Button
+                                                                    x:Name="PlayButton"
+                                                                    BorderThickness="0"
+                                                                    Grid.Column="0"
+                                                                    Height="90"
+                                                                    Width="90"
+                                                                    Margin="-10,0,-10,0"
+                                                                    VerticalAlignment="Top"
+                                                                    Tap="PlayAudio_Tap">
+                                                                    <Image
+                                                                        x:Name="ButtonPlayImage"
+                                                                        Stretch="Uniform"
+                                                                        Height="48"
+                                                                        Width="48"
+                                                                        VerticalAlignment="Center"
+                                                                        HorizontalAlignment="Center"
+                                                                        Source="/SlXnaApp1;component/Images/Play.png" />
+                                                                </Button>
+                                                                <StackPanel
+                                                                    VerticalAlignment="Top"
+                                                                    Grid.Column="1">
+                                                                    <TextBlock
+                                                                        TextWrapping="Wrap"
+                                                                        Text="{Binding Author}"
+                                                                        HorizontalAlignment="Left"
+                                                                        FontSize="{StaticResource PhoneFontSizeMedium}" />
+                                                                    <TextBlock
+                                                                        TextWrapping="Wrap"
+                                                                        Text="{Binding Title}"
+                                                                        HorizontalAlignment="Left"
+                                                                        FontSize="{StaticResource PhoneFontSizeSmall}" />
+                                                                    <Grid
+                                                                        HorizontalAlignment="Left">
+                                                                        <ProgressBar
+                                                                            Background="Transparent"
+                                                                            Style="{StaticResource ProgressBarStyle1}"
+                                                                            Foreground="{StaticResource LoadingPlayerForeBrush}"
+                                                                            Margin="-12,0,0,0"
+                                                                            Height="20"
+                                                                            Width="286"
+                                                                            Value="{Binding LoadingProgress}" />
+                                                                        <ProgressBar
+                                                                            Style="{StaticResource ProgressBarStyle1}"
+                                                                            Background="{StaticResource PlayerBackBrush}"
+                                                                            Foreground="{StaticResource PlayerForeBrush}"
+                                                                            Margin="-12,0,0,0"
+                                                                            Minimum="0"
+                                                                            Maximum="100"
+                                                                            Height="20"
+                                                                            Width="286"
+                                                                            Value="{Binding Progress}" />
+                                                                    </Grid>
+                                                                </StackPanel>
+                                                            </Grid>
+                                                            <TextBlock
+                                                                Grid.Row="2"
+                                                                Text="{Binding Description}"
+                                                                Visibility="{Binding Path=PhotoVisibility}"
+                                                                HorizontalAlignment="Left"
+                                                                Foreground="{StaticResource GrayColorBrush}"
+                                                                Margin="12,6,0,0"
+                                                                FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                            <TextBlock
+                                                                Grid.Row="2"
+                                                                Text="{Binding Description}"
+                                                                Visibility="{Binding Path=DocumentVisibility}"
+                                                                HorizontalAlignment="Left"
+                                                                Foreground="{StaticResource GrayColorBrush}"
+                                                                Margin="12,6,0,0"
+                                                                FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                            <ListBox
+                                                                Grid.Row="3"
+                                                                x:Name="FwdPanel"
+                                                                ItemsSource="{Binding FwdMessages}"
+                                                                Visibility="{Binding Path=FwdVisibility}">
+                                                                <ListBox.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Grid
+                                                                            MinWidth="180">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <StackPanel
+                                                                                Margin="6,0,0,0"
+                                                                                Orientation="Horizontal"
+                                                                                HorizontalAlignment="Left">
+                                                                                <Border
+                                                                                    Width="3"
+                                                                                    Height="50"
+                                                                                    Background="Blue" />
+                                                                                <Image
+                                                                                    Width="50"
+                                                                                    Height="50"
+                                                                                    Stretch="Uniform"
+                                                                                    Margin="6,0,6,0"
+                                                                                    Source="{Binding Path=Photo}" />
+                                                                                </StackPanel>
+                                                                            <StackPanel
+                                                                                Grid.Column="1"
+                                                                                Orientation="Vertical">
+                                                                                <StackPanel
+                                                                                    Orientation="Horizontal">
+                                                                                    <TextBlock
+                                                                                        Text="{Binding FullName}"
+                                                                                        HorizontalAlignment="Left"
+                                                                                        FontWeight="Bold"
+                                                                                        FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                                                    <TextBlock
+                                                                                        Text="{Binding DateTime}"
+                                                                                        HorizontalAlignment="Left"
+                                                                                        Margin="6,0,0,0"
+                                                                                        Foreground="{StaticResource GrayColorBrush}"
+                                                                                        FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                                                </StackPanel>
+                                                                                <TextBlock
+                                                                                    Text="{Binding Body}"
+                                                                                    HorizontalAlignment="Left"
+                                                                                    TextWrapping="Wrap"
+                                                                                    Width="280"
+                                                                                    FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                                                            </StackPanel>
+                                                                        </Grid>
+                                                                    </DataTemplate>
+                                                                </ListBox.ItemTemplate>
+                                                            </ListBox>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Text="{Binding DateTime}"
+                                                Foreground="{StaticResource GrayColorBrush}"
+                                                HorizontalAlignment="Right"
+                                                Margin="12,6,12,6"
+                                                FontSize="{StaticResource PhoneFontSizeNormal}" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </local:MessageTemplateSelector.IsInMessage>
+                        </local:MessageTemplateSelector>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Popup
+                x:Name="Popup"
+                HorizontalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        MaxWidth="480"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        x:Name="PopupImage"/>
+                </Grid>
+            </Popup>
+        </Grid>
+        <!-- Bottom panel to type text -->
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,0,24,0" 
+            VerticalAlignment="Bottom">
+            <TextBlock
+                Name="TypingStatus"
+                Visibility="Collapsed"
+                FontSize="{StaticResource PhoneFontSizeNormal}" />
+            <ScrollViewer
+                x:Name="scroller"
+                MaxHeight="80">
+                <TextBox
+                    x:Name="MessageTextBox"
+                    VerticalAlignment="Bottom"
+                    AcceptsReturn="True"
+                    Margin="98,12,-4,6"
+                    InputScope="Text"
+                    TextWrapping="Wrap"
+                    FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Style="{StaticResource InputBubbleStyle}"
+                    SizeChanged="MessageTextBox_SizeChanged"
+                    GotFocus="MessageTextBox_GotFocus"
+                    LostFocus="MessageTextBox_LostFocus" />
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+
+</phone:PhoneApplicationPage>

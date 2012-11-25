@@ -1,0 +1,165 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SlXnaApp1.Views.SignUpPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="Black"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    mc:Ignorable="d"
+    d:DesignHeight="768"
+    d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0">
+            <Image
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Stretch="None"
+                Margin="24,20,20,0"
+                Visibility="{StaticResource PhoneLightThemeVisibility}"
+                Source="/SlXnaApp1;component/Images/VK_logotype_Light.png" />
+            <Image
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Stretch="None"
+                Margin="24,20,20,0"
+                Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                Source="/SlXnaApp1;component/Images/VK_logotype.png" />
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" 
+              Grid.Row="1"
+              Margin="12,12,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel
+                x:Name="Step1Panel"
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock
+                    x:Name="LoginTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.PhoneNumberLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,12,12,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <TextBox
+                    x:Name="LoginTextBox"
+                    Text=""
+                    HorizontalContentAlignment="Center" TextChanged="LoginTextBox_TextChanged" IsEnabled="True" />
+                <TextBlock
+                    x:Name="NameTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.NameLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,12,12,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <TextBox
+                    x:Name="NameTextBox"
+                    Text=""
+                    HorizontalContentAlignment="Center" TextChanged="NameTextBox_TextChanged" />
+                <TextBlock
+                    x:Name="LastNameTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.LastNameLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,12,12,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <TextBox
+                    x:Name="LastNameTextBox"
+                    Text=""
+                    HorizontalContentAlignment="Center"
+                    TextChanged="LastNameTextBox_TextChanged" />
+                <TextBlock
+                    x:Name="PasswordTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.PasswordLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,12,12,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <PasswordBox
+                    x:Name="PasswordTextBox"
+                    Password=""
+                    HorizontalContentAlignment="Center" PasswordChanged="PasswordTextBox_PasswordChanged" />
+                <TextBlock
+                    x:Name="PasswordConfirmTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.ConfirmPasswordLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,12,12,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <PasswordBox
+                    x:Name="PasswordConfirmTextBox"
+                    Password=""
+                    HorizontalContentAlignment="Center" PasswordChanged="PasswordConfirmTextBox_PasswordChanged" />
+                <Button
+                    x:Name="SignUpButton"
+                    Template="{StaticResource StretchButtonTemplate}"
+                    Content="{Binding Path=LocalizedResources.SignupButton,
+                              Source={StaticResource LocalizedStrings}}"
+                    Margin="12,24,12,0"
+                    MinWidth="100"
+                    HorizontalContentAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Tap="SignUpButton_Tap"
+                    IsEnabled="False" />
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                x:Name="Step2Panel"
+                VerticalAlignment="Center"
+                Visibility="Collapsed"
+                Orientation="Vertical">
+                <TextBlock
+                    x:Name="SmsCodeTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.SmsCodeLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,12,12,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <TextBox
+                    x:Name="SmsCodeTextBox"
+                    Text=""
+                    HorizontalContentAlignment="Center"
+                    TextChanged="SmsCodeTextBox_TextChanged" />
+                <Button
+                    x:Name="OkButton"
+                    Template="{StaticResource StretchButtonTemplate}"
+                    Content="{Binding Path=LocalizedResources.OkButton,
+                              Source={StaticResource LocalizedStrings}}"
+                    Margin="12,24,12,0"
+                    MinWidth="100"
+                    HorizontalContentAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Tap="OkButton_Tap"
+                    IsEnabled="False" />
+                <Button
+                    x:Name="RetrySmsButton"
+                    Template="{StaticResource StretchButtonTemplate}"
+                    Content="{Binding Path=LocalizedResources.RequestSMS,
+                              Source={StaticResource LocalizedStrings}}"
+                    Margin="12,24,12,0"
+                    MinWidth="100"
+                    HorizontalContentAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Tap="RequestSMSButton_Tap" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+ 
+</phone:PhoneApplicationPage>

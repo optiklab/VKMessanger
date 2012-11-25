@@ -1,0 +1,117 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SlXnaApp1.Views.AuthPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="Black"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    mc:Ignorable="d"
+    d:DesignHeight="768"
+    d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0">
+            <Image
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Stretch="None"
+                Margin="24,20,20,0"
+                Visibility="{StaticResource PhoneLightThemeVisibility}"
+                Source="/SlXnaApp1;component/Images/VK_logotype_Light.png" />
+            <Image
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Stretch="None"
+                Margin="24,20,20,0"
+                Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                Source="/SlXnaApp1;component/Images/VK_logotype.png" />
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock
+                    x:Name="LoginTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.AuthLoginLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,12,12,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <TextBox
+                    x:Name="LoginTextBox"
+                    Text=""
+                    HorizontalContentAlignment="Center" TextChanged="LoginTextBox_TextChanged" />
+                <TextBlock
+                    x:Name="PasswordTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.PasswordLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,24,12,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <PasswordBox
+                    x:Name="PasswordTextBox"
+                    Password=""
+                    HorizontalContentAlignment="Center"
+                    PasswordChanged="PasswordTextBox_PasswordChanged" />
+                <Image
+                    x:Name="CaptchaImage"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed"
+                    Stretch="UniformToFill"
+                    Height="100"
+                    Width="260"
+                    Margin="12,24,0,0"
+                    Source="/SlXnaApp1;component/Images/VK_logotype.png" />
+                <TextBlock
+                    x:Name="CaptchaTextBoxLabel"
+                    Foreground="Gray"
+                    Text="{Binding Path=LocalizedResources.CaptchaLabel, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,24,12,0"
+                    Visibility="Collapsed"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+                <TextBox
+                    x:Name="CaptchaTextBox"
+                    Text=""
+                    Visibility="Collapsed"
+                    HorizontalContentAlignment="Center" TextChanged="LoginTextBox_TextChanged" />
+                <Button
+                    x:Name="SignInButton"
+                    Template="{StaticResource SignInButtonTemplate}"
+                    Content="{Binding Path=LocalizedResources.LoginButton, Source={StaticResource LocalizedStrings}}"
+                    Margin="12,24,12,0"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    Tap="SignInButton_Tap" IsEnabled="False" />
+            </StackPanel>
+            <Button
+                Grid.Row="1"
+                x:Name="SignUpButton"
+                Margin="12,0,12,0"
+                Template="{StaticResource SignUpButtonTemplate}"
+                Tap="SignUpButton_Tap" />
+        </Grid>
+    </Grid>
+ 
+</phone:PhoneApplicationPage>

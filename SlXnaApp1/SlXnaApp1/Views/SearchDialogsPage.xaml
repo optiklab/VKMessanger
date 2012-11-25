@@ -1,0 +1,182 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SlXnaApp1.Views.SearchDialogsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:SlXnaApp1.Views;assembly=SlXnaApp1"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:SelectionConverter x:Key="selectionConverter"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBox
+            x:Name="SearchTextBox"
+            Margin="12"
+            HorizontalContentAlignment="Left"
+            TextChanged="SearchTextBox_TextChanged" />
+        
+        <!--  -->
+        <controls:Pivot
+            x:Name="PivotControl"
+            Grid.Row="1">
+            <controls:PivotItem
+                x:Name="MessagesPivotItem"
+                Header="{Binding Path=LocalizedResources.MessagesTab, Source={StaticResource LocalizedStrings}}">
+                <ListBox
+                    x:Name="MessagesPanel"
+                    SelectionChanged="onSelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    x:Name="ProfilePhoto"
+                                    Height="75"
+                                    Width="75"
+                                    Margin="0,0,20,0"
+                                    Stretch="Uniform"
+                                    Grid.Column="0"
+                                    Source="{Binding Path=Photo}" />
+                                <StackPanel
+                                    Orientation="Vertical"
+                                    MinWidth="320"
+                                    Grid.Column="1">
+                                    <StackPanel
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            Text="{Binding Path=FullName}"
+                                            FontSize="25" />
+                                        <StackPanel
+                                            Visibility="{Binding Path=IsOnlineFlagVisibility}">
+                                            <Image
+                                                Height="8"
+                                                Width="8"
+                                                Stretch="UniformToFill"
+                                                Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Margin="5, 0, 0, 0"
+                                                Source="/SlXnaApp1;component/Images/Dot.png" />
+                                            <Image
+                                                Height="8"
+                                                Width="8"
+                                                Stretch="UniformToFill"
+                                                Visibility="{StaticResource PhoneLightThemeVisibility}"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Margin="5, 0, 0, 0"
+                                                Source="/SlXnaApp1;component/Images/Dot_Light.png" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            Text="{Binding Path=IsOut}"
+                                            Foreground="{StaticResource PhoneAccentBrush}"
+                                            FontSize="20"/>
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Margin="0,0,5,0"
+                                            HorizontalAlignment="Right"
+                                            Text="{Binding Path=Time}"
+                                            Foreground="{StaticResource PhoneForegroundBrush}"
+                                            FontSize="20"/>
+                                    </Grid>
+                                    <!--Text="{Binding Path=Message, Converter={StaticResource selectionConverter}}
+                                    Foreground="{StaticResource GrayColorBrush}"-->
+                                    <TextBlock
+                                        Loaded="TextBlock_Loaded"
+                                        Foreground="{StaticResource GrayColorBrush}"
+                                        Margin="5,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        Text="{Binding Path=Message}"
+                                        FontSize="20"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </controls:PivotItem>
+            <controls:PivotItem
+                x:Name="DialogsPivotItem"
+                Header="{Binding Path=LocalizedResources.DialogsTab, Source={StaticResource LocalizedStrings}}">
+                <ListBox
+                    x:Name="DialogsPanel"
+                    SelectionChanged="onSelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    x:Name="ProfilePhoto"
+                                    Height="75"
+                                    Width="75"
+                                    Margin="0,0,20,0"
+                                    Stretch="Uniform"
+                                    Grid.Column="0"
+                                    Source="{Binding Path=Photo}" />
+                                <TextBlock
+                                    Text="{Binding Path=FullName}"
+                                    FontSize="25"
+                                    Width="320"
+                                    Loaded="TextBlockD_Loaded"
+                                    Grid.Column="1"/>
+                                <StackPanel
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Margin="5, 0, 0, 0"
+                                    Visibility="{Binding Path=IsOnlineFlagVisibility}">
+                                    <Image
+                                        Height="8"
+                                        Width="8"
+                                        Stretch="UniformToFill"
+                                        Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                                        Source="/SlXnaApp1;component/Images/Dot.png" />
+                                    <Image
+                                        Height="8"
+                                        Width="8"
+                                        Stretch="UniformToFill"
+                                        Visibility="{StaticResource PhoneLightThemeVisibility}"
+                                        Source="/SlXnaApp1;component/Images/Dot_Light.png" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>

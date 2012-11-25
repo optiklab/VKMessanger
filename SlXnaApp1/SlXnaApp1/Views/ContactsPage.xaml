@@ -1,0 +1,304 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SlXnaApp1.Views.ContactsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:SlXnaApp1"
+    xmlns:data="clr-namespace:SlXnaApp1.Entities"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    Background="{StaticResource PhoneContrastBackgroundBrush}"
+    shell:SystemTray.IsVisible="True">
+    
+    <phone:PhoneApplicationPage.Resources>
+
+        <data:GroupToBrushValueConverter x:Key="groupBrush"/>
+
+    </phone:PhoneApplicationPage.Resources>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid
+            x:Name="TitlePanel"
+            Height="70"
+            Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Image
+                Grid.Column="0"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Margin="12,20,20,0"
+                Tap="Image_Tap"
+                Stretch="None"
+                Visibility="{StaticResource PhoneLightThemeVisibility}"
+                Source="/SlXnaApp1;component/Images/VK_logotype_Light.png" />
+            <Image
+                Grid.Column="0"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Margin="12,20,20,0"
+                Tap="Image_Tap"
+                Stretch="None"
+                Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                Source="/SlXnaApp1;component/Images/VK_logotype.png" />
+            <Button
+                x:Name="UnreadMessagesButton"
+                BorderThickness="0"
+                Grid.Column="1"
+                Margin="5,0,5,0"
+                Padding="-10"
+                Visibility="Visible"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Tap="ShowUnreadMessages_Tap">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Column="0"
+                        Stretch="None"
+                        Height="48"
+                        Width="48"
+                        Visibility="{StaticResource PhoneLightThemeVisibility}"
+                        VerticalAlignment="Bottom"
+                        Source="/SlXnaApp1;component/Images/UnreadMessages_Icon_Light.png" />
+                    <Image
+                        Grid.Column="0"
+                        Stretch="None"
+                        Height="48"
+                        Width="48"
+                        Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                        VerticalAlignment="Bottom"
+                        Source="/SlXnaApp1;component/Images/UnreadMessages_Icon.png" />
+                    <Border
+                        Grid.Column="1"
+                        Margin="-10,-10,0,0"
+                        Background="{StaticResource PhoneAccentBrush}"
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            x:Name="MessagesNumberTextBlock"
+                            TextAlignment="Center"
+                            Foreground="White"
+                            MinWidth="25"
+                            Text="0"/>
+                    </Border>
+                </Grid>
+            </Button>
+            <Button
+                Margin="5,0,5,0"
+                x:Name="NewFriendsButton"
+                Grid.Column="2"
+                Padding="-10"
+                BorderThickness="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Tap="ShowRequests_Tap">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Column="0"
+                        Stretch="None"
+                        Height="48"
+                        Width="48"
+                        Visibility="{StaticResource PhoneLightThemeVisibility}"
+                        Source="/SlXnaApp1;component/Images/Requests_Icon_Light.png" />
+                    <Image
+                        Grid.Column="0"
+                        Stretch="None"
+                        Height="48"
+                        Width="48"
+                        Visibility="{StaticResource PhoneDarkThemeVisibility}"
+                        Source="/SlXnaApp1;component/Images/Requests_Icon.png" />
+                    <Border
+                        Grid.Column="1"
+                        Margin="-10,-10,0,0"
+                        Background="{StaticResource PhoneAccentBrush}"
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            x:Name="FriendRequestsNumberTextBlock"
+                            TextAlignment="Center"
+                            Foreground="White"
+                            MinWidth="25"
+                            Text="0"/>
+                    </Border>
+                </Grid>
+            </Button>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1"
+            VerticalScrollBarVisibility ="Disabled"
+            HorizontalScrollBarVisibility="Hidden">
+            <StackPanel
+                x:Name="MenuPanel"
+                Orientation="Horizontal"
+                Grid.Row="1"
+                Margin="0"
+                Background="{StaticResource PhoneBackgroundBrush}">
+                <TextBlock
+                    x:Name="ContactsPageTitle"
+                    Text="{Binding Path=LocalizedResources.ContactsTab, Source={StaticResource LocalizedStrings}}"
+                    Margin="10"
+                    Padding="0"
+                    FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+                <TextBlock
+                    x:Name="DialogsPageTitle"
+                    Text="{Binding Path=LocalizedResources.MessagesTab, Source={StaticResource LocalizedStrings}}"
+                    Margin="10"
+                    Padding="0"
+                    Foreground="Gray"
+                    FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}"
+                    FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                    Tap="DialogsPageTitle_Tap"/>
+                <TextBlock
+                    x:Name="FriendsPageTitle"
+                    Text="{Binding Path=LocalizedResources.FriendsTab, Source={StaticResource LocalizedStrings}}"
+                    Margin="10"
+                    Padding="0"
+                    Foreground="Gray"
+                    FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}"
+                    FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                    Tap="FriendsPageTitle_Tap"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel
+            Grid.Row="2">
+            <Button
+                Visibility="Visible"
+                x:Name="InviteFriendButton"
+                Margin="12,30,0,0"
+                Content="{Binding Path=LocalizedResources.InviteFriend, Source={StaticResource LocalizedStrings}}"
+                Template="{StaticResource TransparentButtonTemplate}"
+                HorizontalAlignment="Left"
+                FontSize="{StaticResource PhoneFontSizeExtraLarge}"
+                FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+            <TextBlock
+                x:Name="SyncContactsDescription"
+                Visibility="Visible"
+                Text="{Binding Path=LocalizedResources.SyncDescription, Source={StaticResource LocalizedStrings}}"
+                TextWrapping="Wrap"
+                FontSize="{StaticResource PhoneFontSizeMedium}"
+                FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                Margin="12,50,0,0" />
+            <Button
+                Visibility="Visible"
+                x:Name="SyncContactsButton"
+                Margin="12,50,0,0"
+                Content="{Binding Path=LocalizedResources.SyncContactsButton, Source={StaticResource LocalizedStrings}}"
+                Template="{StaticResource StretchButtonTemplate}"
+                HorizontalAlignment="Left"
+                Tap="SyncContactsButton_Tap" />
+        </StackPanel>
+        
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="3" Margin="0" Background="{StaticResource PhoneBackgroundBrush}">
+            <toolkit:LongListSelector
+                x:Name="FriendsPanel"
+                Background="Transparent"
+                SelectionChanged="onSelectionChanged">
+                <toolkit:LongListSelector.GroupItemsPanel>
+                    <ItemsPanelTemplate>
+                        <toolkit:WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </toolkit:LongListSelector.GroupItemsPanel>
+                <toolkit:LongListSelector.GroupItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Background="{Binding Converter={StaticResource groupBrush}}"
+                            Width="99"
+                            Height="99"
+                            Margin="6"
+                            IsHitTestVisible="{Binding HasItems}">
+                            <TextBlock
+                                Text="{Binding Key}" 
+                                FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                FontSize="36"
+                                Margin="{StaticResource PhoneTouchTargetOverhang}"
+                                Foreground="White"
+                                VerticalAlignment="Bottom"/>
+                        </Border>
+                    </DataTemplate>
+                </toolkit:LongListSelector.GroupItemTemplate>
+
+                <toolkit:LongListSelector.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Border Background="Transparent"
+                                Margin="{StaticResource PhoneTouchTargetOverhang}">
+                            <Border
+                                Background="{StaticResource PhoneAccentBrush}"
+                                Width="75"
+                                Height="75"
+                                HorizontalAlignment="Left">
+                                <TextBlock
+                                    Text="{Binding Key}" 
+                                    Foreground="White"
+                                    Style="{StaticResource PhoneTextExtraLargeStyle}"
+                                    VerticalAlignment="Bottom"/>
+                            </Border>
+                        </Border>
+                    </DataTemplate>
+                </toolkit:LongListSelector.GroupHeaderTemplate>
+
+                <toolkit:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="{StaticResource PhoneTouchTargetOverhang}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                x:Name="FriendPhoto"
+                                Height="75"
+                                Width="75"
+                                Stretch="Uniform"
+                                Margin="0,0,20,0"
+                                Grid.Column="0"
+                                Source="{Binding Path=Photo}" />
+                            <StackPanel
+                                Orientation="Vertical"
+                                Grid.Column="1">
+                                <TextBlock
+                                    Text="{Binding Path=ContactName}"
+                                    FontSize="25"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                <TextBlock
+                                    Text="{Binding Path=FullName}"
+                                    TextWrapping="Wrap"
+                                    Foreground="Gray"
+                                    FontSize="20"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </toolkit:LongListSelector.ItemTemplate>
+            </toolkit:LongListSelector>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
